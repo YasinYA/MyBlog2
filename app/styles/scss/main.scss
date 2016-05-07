@@ -1,0 +1,30 @@
+$bodyBG : #fafafa;
+$contentBorder: 1px solid #fff;
+$contentBoxshadow: 0 0 10px #000;
+$contentFont: sans-serif, 'arial';
+$headColor: #1c1c1c;
+$parlineHieght: 1.5em;
+$parColor: #252525;
+$extraPadding: 20px;
+$extraMargin: 0 0 20px 10px;
+
+body {
+	background: $bodyBG;
+}
+
+.contentWrapper {
+	border: $contentBorder;
+	box-shadow: $contentBoxshadow;
+	font-family: $contentFont;
+	margin: $extraMargin;
+	padding: $extraPadding;
+}
+
+.head {
+	color: $headColor;
+}
+
+.par {
+	line-height: $parlineHieght;
+	color: $parColor;
+}
