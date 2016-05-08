@@ -1,23 +1,25 @@
 <!DOCTYPE html>
-<html>
+<html ng-app="MyBlog">
 <head>
+	<base href="/">
+	<meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
 	<title>MyBlog</title>
+	<link rel="stylesheet" type="text/css" href="lib/bootstrap/dist/css/bootstrap.min.css">
 	<link rel="stylesheet" type="text/css" href="styles/css/main.css">
 </head>
 <body>
-	<div class="contentWrapper">
-		<h1 class="head">MyBlog Version 2</h1>
-		<p class="par">
-			Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-			tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-			quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-			consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-			cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-			proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-		</p>
+	<div ui-view="nav"></div>
+	<div class="container">
+		<div ui-view="content"></div>
 	</div>
-
-
+	
+	<script type="text/javascript" src="lib/jquery/dist/jquery.min.js"></script>
+	<script type="text/javascript" src="lib/bootstrap/dist/js/bootstrap.min.js"></script>
+	<script type="text/javascript" src="lib/angular/angular.min.js"></script>
+	<script type="text/javascript" src="lib/angular-ui-router/release/angular-ui-router.min.js"></script>
+	<script type="text/javascript" src="lib/angular-resource/angular-resource.min.js"></script>
 	<script type="text/javascript" src="js/main.min.js"></script>
 </body>
 </html>

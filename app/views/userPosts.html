@@ -1,0 +1,23 @@
+<div class="container row" ng-init="getPosts()">
+	<div class="col-md-8" ng-repeat="post in posts">
+		<div class="posts row">
+			<div class="info col-sm-12">
+				<span>in <a href="">{{post.category}}</a> <span>By {{post.author}}</span></span>
+				<span class="pull-right">{{post.createddate | date : 'yyyy-MM-dd'}}</span>
+			</div>
+			<div class="thumbnail">
+				<img src="{{post.image}}">
+			</div>
+			<div>
+				<div class="postContent">
+					<h2 class="title"><a href="/#/more/{{post._id}}">{{post.title}}</a></h2>
+					<p class="par">{{post.content | limitTo: 300}}...</p>
+				</div>
+				<div class="likesComments">
+					<span><span ng-click="incLikes(post._id)"><i class="fa fa-heart-o" aria-hidden="true"></i></span>  {{likes}}</span>
+					<span class="comments"><i class="fa fa-comment-o" aria-hidden="true"></i></span>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

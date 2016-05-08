@@ -1,0 +1,16 @@
+<div class="container" ng-init="getSingle()">
+	<div class="row">
+		<div class="col-sm-8 jumbotron">
+			<div class="thumbnail">
+				<img src="{{singlePost.image}}">
+			</div>
+			<div>
+				<h2>{{singlePost.title}}</h2>
+				<p>{{singlePost.content}}</p>
+				<span>{{singlePost.author}}</span>
+			</div>
+			<a ng-click="removePost()" class="btn btn-danger pull-right btn-local">Delete</a>
+			<a href="/#/edit/{{singlePost._id}}" class="btn btn-info pull-right btn-local">Edit</a>
+		</div>
+	</div>
+</div>

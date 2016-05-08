@@ -2,6 +2,7 @@
 //	Requiring
 //////////////////////////////////////////
 var gulp = require('gulp'),
+	nodemon = require('gulp-nodemon'),
 	sass = require('gulp-sass'),
 	sourcemaps = require('gulp-sourcemaps'),
 	browserSync = require('browser-sync'),
@@ -18,6 +19,7 @@ var gulp = require('gulp'),
 //	paths
 //////////////////////////////////////////
 var paths = {
+	server: './server.js',
 	scripts: [
 		'app/js/app.js',
 		'app/js/services.js',
@@ -25,7 +27,7 @@ var paths = {
 		'app/js/filters.js'
 	],
 	stylesSrc: [
-		'app/styles/scss/main.scss'
+		'app/styles/scss/*.scss'
 	],
 	stylesDest: 'app/styles/css/',
 	buildFileForldersRemove: [
@@ -71,7 +73,7 @@ gulp.task('lint', function() {
 gulp.task('styles', function() {
 	return gulp.src(paths.stylesSrc)
 	.pipe(sourcemaps.init())
-		.pipe(sass({outputStyle: 'compressed'}))
+		.pipe(sass({outputStyle: 'compressed', includePaths : ['/scss/']}))
 		.on('error', errorlog)
 		.pipe(autoprefixer({
 			browsers: ['last 3 versions'],
@@ -119,12 +121,26 @@ gulp.task('build', ['build:copy', 'build:remove']);
 ///////////////////////////////////////////
 //	Browser-Sync Task
 //////////////////////////////////////////
-gulp.task('browser-sync', function() {
-	browserSync({
-		server: {
-			baseDir: "./app/"
+gulp.task('browser-sync', ['server'], function() {
+	browserSync.init({
+		proxy: "http://localhost:3005",
+        port: 7000
+	});
+});
+
+///////////////////////////////////////////
+//	Server
+//////////////////////////////////////////
+gulp.task('server', function(cb) {
+	var started = false;
+	nodemon({
+		script: paths.server
+	}).on('start', function() {
+		if(!started) {
+			cb();
+			started = true;
 		}
-	})
+	});
 });
 
 ///////////////////////////////////////////

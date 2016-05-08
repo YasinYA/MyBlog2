@@ -1,0 +1,62 @@
+<div class="container" ng-init="getSingle()">
+	<div class="row">
+		<div class="col-sm-8 jumbotron">
+			<div class="thumbnail">
+				<img src="{{singlePost.image}}">
+			</div>
+			<div>
+				<h2>{{singlePost.title}}</h2>
+				<p>{{singlePost.content}}</p>
+				<span>{{singlePost.author}}</span>
+				<span class="pull-right">{{singlePost.createddate | date : 'yyyy-MM-dd'}}</span>
+			</div>
+			<br>
+			<hr/>
+			<div  ng-init="getComments()">
+				<h4>Comments: {{arr.length}}</h4>
+				<div ng-repeat="comment in comments">
+					<div ng-show="singlePost._id == comment.postId">	
+						<div class="well">
+							<div class="pull-left">
+								<img class="avatar img-responsive" src="{{comment.image}}">
+							</div>
+							<div>
+								<h4 class="name"><a href="">{{comment.name | labelCase}}</a></h4>
+								<span class="body">
+									{{comment.body}}
+								</span>
+
+								<span class="pull-right date">{{comment.createddate | date : 'yyyy-MM-dd  HH:mm'}}</span>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div>
+				<form class="form-horizontal"  ng-submit="addComment()">
+					<div class="from-group">
+						<label for="name" class="contorl-label input-local">
+							Name
+						</label>
+						<input type="text" class="form-control input-local" name="name" ng-model="name" placeholder="Name" required></input>
+					</div>
+					<div class=" from-group">
+						<label for="name" class="contorl-label input-local">
+							Email
+						</label>
+						<input type="email" class="form-control input-local" name="email" ng-model="email" placeholder="Email" required></input>
+					</div>
+					<div class="from-group">
+						<label for="comment" class="contorl-label input-local">
+							Comment
+						</label>
+						<textarea type="text" class="form-control input-local" name="comment" ng-model="body" placeholder="Comment" required></textarea>
+					</div>
+					<div>
+						<button type="submit" class="btn btn-info btn-local">Add Comment</button>
+					</div>
+				</form>
+			</div>
+		</div>
+	</div>
+</div>

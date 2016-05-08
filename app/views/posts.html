@@ -1,0 +1,15 @@
+<div class="container" ng-init="getPosts()">
+	<div class="row" ng-repeat="post in posts">
+		<div class="col-sm-8 jumbotron">
+			<div class="thumbnail">
+				<img src="{{post.image}}">
+			</div>
+			<div>
+				<h2><a href="/#/single/{{post._id}}">{{post.title}}</a></h2>
+				<p>{{post.content | limitTo: 100}}...</p>
+				<span>{{post.author}}</span>
+				<span class="pull-right">{{post.createddate | date : 'yyyy-MM-dd'}}</span>
+			</div>
+		</div>
+	</div>
+</div>
