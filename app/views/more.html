@@ -12,21 +12,29 @@
 			</div>
 			<br>
 			<hr/>
+			<div ng-init="getlikes(singlePost._id)">
+				<span class="singlePostLike"><span><i ng-click="liker(singlePost._id)" class="fa fa-heart likeIcon" aria-hidden="true"></i></span> {{arr2.length}}</span>
+			</div>
 			<div  ng-init="getComments()">
 				<h4>Comments: {{arr.length}}</h4>
 				<div ng-repeat="comment in comments">
 					<div ng-show="singlePost._id == comment.postId">	
-						<div class="well">
-							<div class="pull-left">
+						<div class="well row">
+							<div class="pull-left col-sm-3">
 								<img class="avatar img-responsive" src="{{comment.image}}">
 							</div>
-							<div>
-								<h4 class="name"><a href="">{{comment.name | labelCase}}</a></h4>
-								<span class="body">
-									{{comment.body}}
-								</span>
-
-								<span class="pull-right date">{{comment.createddate | date : 'yyyy-MM-dd  HH:mm'}}</span>
+							<div class="col-sm-8">
+								<div class="row">
+									<div class="col-sm-9">
+										<h4 class="name"><a href="">{{comment.name | labelCase}}</a></h4>
+										<span class="body">
+											{{comment.body}}
+										</span>
+									</div>
+									<div class="col-sm-3">
+										<span class="pull-right date">{{comment.createddate | date : 'yyyy-MM-dd  HH:mm'}}</span>
+									</div>
+								</div>
 							</div>
 						</div>
 					</div>

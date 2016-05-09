@@ -15,7 +15,7 @@ angular.module('MyBlog')
 	.controller('DashboardController', ['$scope', function($scope){
 		$scope.message = 'hello world this is dashboard';
 	}])
-	.controller('PostsController', ['$scope', 'Posts', 'Post', 'Comments', '$stateParams', function($scope, Posts, Post, Comments, $stateParams) {
+	.controller('PostsController', ['$scope', 'Posts', 'Post', 'Likes', 'Comments', '$stateParams', function($scope, Posts, Post, Likes, Comments, $stateParams) {
 		//getting all the posts
 		$scope.getPosts = function() {
 			$scope.posts = Posts.query();
@@ -24,6 +24,30 @@ angular.module('MyBlog')
 		// getting single post
 		$scope.getSingle = function(){
 			$scope.singlePost = Post.get({ id: $stateParams.id })
+		};
+
+		$scope.getlikes = function(e) {
+			$scope.likes = Likes.query();
+			$scope.arr2 = [];
+			$scope.likes.$promise.then(function(val) {
+				val.forEach(function(like) {
+					if ($stateParams.id === like.postId) {	
+						$scope.arr2.push(like);
+					}
+				});
+			});
+		};
+
+		$scope.like = 0;
+		$scope.liker = function(postid) {
+			$scope.like++;
+			$scope.newLike = {
+				postId: postid,
+				likes: $scope.like
+			};
+			$scope.postLike = Likes.save($scope.newLike, function() {
+				window.location.reload()
+			});
 		};
 
 		$scope.getComments = function() {

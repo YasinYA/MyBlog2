@@ -30,11 +30,13 @@ var paths = {
 		'app/styles/scss/*.scss'
 	],
 	stylesDest: 'app/styles/css/',
-	buildFileForldersRemove: [
-		'build/scss/',
-		'build/js/!(*.min.js)',
+	buildFilesFoldersRemove:[
+		'build/app/scss/', 
+		'build/app/js/!(*.min.js)',
 		'build/bower.json',
-		'build/maps'
+		'build/bower_components/',
+		'build/app/maps/',
+		'build/app/tests/'
 	]
 };
 
@@ -43,13 +45,15 @@ var errorlog = function(err) {
 	this.emit('end');
 };
 
+var reloadDelay = 1000;
+
 ///////////////////////////////////////////
 //	Scripts Task
 //////////////////////////////////////////
 gulp.task('scripts', function() {
 	return gulp.src(paths.scripts)
 	.pipe(sourcemaps.init())
-		.pipe(concat('main.js'))
+		.pipe(concat('app.js'))
 		.pipe(ngAnnotate())
 		.pipe(uglify())
 		.on('error', errorlog)
@@ -104,26 +108,35 @@ gulp.task('build:cleanfolder', function (cb) {
 });
 
 // task to create build directory of all files
-gulp.task('build:copy', ['build:cleanfolder'], function(){
-    return gulp.src('app/**/*/')
-    .pipe(gulp.dest('build/'));
+gulp.task('build:copy1', ['build:cleanfolder'], function(){
+    return gulp.src(['app/**/*'])
+    .pipe(gulp.dest('build/app'));
 });
 
+gulp.task('build:copy2', ['build:cleanfolder'], function(){
+    return (gulp.src('models/**/*'))
+    .pipe(gulp.dest('build/models/'));
+});
+
+gulp.task('build:copy3', ['build:cleanfolder'], function(){
+    return (gulp.src(['./server.js', './api.js', './auth.js', './package.json']))
+    .pipe(gulp.dest('build/'));
+});
 // task to removed unwanted build files
 // list all files and directories here that you don't want included
-gulp.task('build:remove', ['build:copy'], function (cb) {
-	del(config.buildFilesFoldersRemove, cb);
+gulp.task('build:remove', ['build:copy1', 'build:copy2', 'build:copy3'], function (cb) {
+	del(paths.buildFilesFoldersRemove, cb);
 });
 
 //same like th defualt task
-gulp.task('build', ['build:copy', 'build:remove']);
+gulp.task('build', ['build:copy1', 'build:copy2', 'build:copy3', 'build:remove']);
 
 ///////////////////////////////////////////
 //	Browser-Sync Task
 //////////////////////////////////////////
 gulp.task('browser-sync', ['server'], function() {
 	browserSync.init({
-		proxy: "http://localhost:3005",
+		proxy: "http://localhost:3004",
         port: 7000
 	});
 });
@@ -137,8 +150,8 @@ gulp.task('server', function(cb) {
 		script: paths.server
 	}).on('start', function() {
 		if(!started) {
-			cb();
 			started = true;
+	         cb();
 		}
 	});
 });
@@ -151,6 +164,8 @@ gulp.task('watch', function() {
 	gulp.watch('app/styles/scss/**/*.scss', ['styles']);
 	gulp.watch('app/**/*.html', ['html']);	
 });
+
+gulp.task('build:serve', ['server']);
 
 ///////////////////////////////////////////
 //	Defualt Task

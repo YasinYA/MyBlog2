@@ -1,9 +1,3 @@
-/**
-* MyBlog Module
-*
-* Description
-* version 2 of my blog 
-*/
 angular.module('MyBlog', ['ui.router', 'ngResource'])
 	.config(['$stateProvider', '$urlRouterProvider', '$locationProvider',function($stateProvider, $urlRouterProvider, $locationProvider) {
 		$urlRouterProvider.otherwise("/");
@@ -96,4 +90,8 @@ angular.module('MyBlog', ['ui.router', 'ngResource'])
 		    });
 
 		    $locationProvider.html5Mode(true);
+	}])
+	.run(["$rootScope", "$state", "$stateParams", function($rootScope, $state, $stateParams) {
+		$rootScope.$state = $state;
+		$rootScope.$stateParams = $stateParams;	
 	}]);

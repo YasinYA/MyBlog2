@@ -172,8 +172,7 @@ router
 	/////////////////////////////////////////////	
 	.route('/likes')
 	.get(function(req, res) {
-		var id = req.body.postId;
-		Likes.getLikes(id, function(err, likes) {
+		Likes.getLikes(function(err, likes) {
 			if(err) {
 				throw err;
 			}

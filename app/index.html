@@ -7,12 +7,27 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
 	<title>MyBlog</title>
 	<link rel="stylesheet" type="text/css" href="lib/bootstrap/dist/css/bootstrap.min.css">
+	<link rel="stylesheet" type="text/css" href="./styles/css/font-awesome.css">
 	<link rel="stylesheet" type="text/css" href="styles/css/main.css">
 </head>
-<body>
+<body ng-class="{ bodybg: $state.includes('home') }">
 	<div ui-view="nav"></div>
 	<div class="container">
 		<div ui-view="content"></div>
+	</div>
+
+	<div id="footer" class="navbar navbar-default navbar-fixed-bottom">
+		<div class="container">
+			<div class="pull-left">
+				<p class="copyright">&copy; Copyright MyBlog - 2016 </p>
+			</div>
+			<div class="text-center">
+				<div class="socailIcons">
+					<i class="fa fa-facebook-square fa-3x icons" aria-hidden="true"></i>
+					<i class="fa fa-github fa-3x icons" aria-hidden="true"></i>
+				</div>
+			</div>
+		</div>
 	</div>
 	
 	<script type="text/javascript" src="lib/jquery/dist/jquery.min.js"></script>
@@ -20,6 +35,6 @@
 	<script type="text/javascript" src="lib/angular/angular.min.js"></script>
 	<script type="text/javascript" src="lib/angular-ui-router/release/angular-ui-router.min.js"></script>
 	<script type="text/javascript" src="lib/angular-resource/angular-resource.min.js"></script>
-	<script type="text/javascript" src="js/main.min.js"></script>
+	<script type="text/javascript" src="js/app.min.js"></script>
 </body>
 </html>
