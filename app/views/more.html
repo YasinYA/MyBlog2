@@ -12,11 +12,16 @@
 			</div>
 			<br>
 			<hr/>
-			<div ng-init="getlikes(singlePost._id)">
-				<span class="singlePostLike"><span><i ng-click="liker(singlePost._id)" class="fa fa-heart likeIcon" aria-hidden="true"></i></span> {{arr2.length}}</span>
-			</div>
-			<div  ng-init="getComments()">
-				<h4>Comments: {{arr.length}}</h4>
+			
+			<div ng-init="getComments()">
+				<div class="row mainWrapper">
+					<div ng-init="getlikes(singlePost._id)" class=" likeWrapper">
+						<h4><span class="singlePostLike"><span><i ng-click="liker(singlePost._id)" class="fa fa-heart likeIcon" aria-hidden="true"></i></span> {{arr2.length}}</span></h4>
+					</div>
+					<div class=" commentWrapper">
+						<h4><i class="fa fa-comment commentIcon" aria-hidden="true"></i> {{arr.length}}</h4>
+					</div>
+				</div>
 				<div ng-repeat="comment in comments">
 					<div ng-show="singlePost._id == comment.postId">	
 						<div class="well row">

@@ -1,0 +1,138 @@
+@import "./_variables.scss";
+@import "./_typography.scss";
+
+/* Common */
+body {
+	margin-bottom: 100px;
+}
+
+.bodybg {
+	background: $bodyBg no-repeat fixed center center;
+	background-size: 100% 100%; 
+}
+
+a {
+	text-decoration: none;
+
+	&:hover {
+		text-decoration: none;
+	}
+}
+
+/* Nav */
+#local-nav {
+	border-radius: 0;
+	border: 0;
+}
+
+.nav li a {
+	color: $navLinkColor !important;
+
+	&:hover {
+		color: $navLinkHoverColor !important;
+	}
+}
+
+.navbar-brand {
+	color: $navBrandColor !important;
+}
+
+/* Posts Page */
+.posts {
+	box-shadow: $boxShadowSecondary;
+	margin-bottom: $highMar;
+	border-radius: $fourSideBR;
+}
+
+.info {
+	background: $postInfobg;
+	padding: $midPadd;
+	border-radius: $topLeftRightSideBR;
+}
+
+.likesComments {
+	border-top: 1px solid #000;
+	background: $postInfobg;
+	padding: $lowPadd;
+	border-radius: $bottomLeftRightSideBR;
+}
+
+.like {
+	margin-right: $lowMar;
+}
+
+.title {
+	margin-left: $lowMar;
+}
+
+.par {
+	margin-left: $lowMar;
+}
+
+.category {
+	color: $categoryFontColor;
+}
+
+/* Single Post Page */
+
+.mainWrapper {
+	margin-bottom: 20px;
+}
+
+.likeWrapper {
+	width: 70px;
+	display: inline-block;
+}
+
+.singlePostLike {
+	margin-top: $lowMar;
+	margin-left: $midMar;
+}
+
+
+.commentWrapper {
+	width: 120px;
+	display: inline-block;
+	&.commentWrapper h4 {
+		margin-left: 5px;
+	}
+}
+
+.avatar {
+	width: 50px;
+	height: 50px;
+	border: 1px solid #fff;
+}
+
+.input-local {
+	margin-bottom: $lowMar;
+}
+
+/* About Me Page */
+.local-img {
+	box-shadow: $boxShodowBasic;
+}
+
+/* Footer */
+#footer {
+	height: 50px;
+	border: 0;
+}
+
+.copyright {
+	color: $footerFontColor;
+	margin-top: $lowMar;
+}
+
+.socailIcons {
+	width: 150px;
+	margin: $lowMar auto;
+}
+
+.icons {
+	margin-left: $lowMar;
+	color: $footerFontColor;
+	&:hover {
+		color: $footerIconsHoverColor;
+	}
+}

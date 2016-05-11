@@ -61,7 +61,7 @@ angular.module('MyBlog', ['ui.router', 'ngResource'])
 		    	views: {
 		        	'nav' : {templateUrl: 'views/dashboardNav.html'},
 		        	'content' : { templateUrl: 'views/newPost.html',
-		        				  controller: 'PostsController'}
+		        				  controller: 'AddPostController'}
 		        }
 		    })
 		    .state('edit', {
@@ -69,7 +69,7 @@ angular.module('MyBlog', ['ui.router', 'ngResource'])
 		    	views: {
 		        	'nav' : {templateUrl: 'views/dashboardNav.html'},
 		        	'content' : { templateUrl: 'views/edit.html',
-		        				  controller: 'PostsController'}
+		        				  controller: 'EditRemoveController'}
 		        }
 		    })
 		    .state('single', {

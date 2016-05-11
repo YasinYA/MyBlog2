@@ -64,7 +64,6 @@ angular.module('MyBlog')
 			})
 		};
 
-
 		//adding comments
 		$scope.addComment = function() {
 			$scope.comment = {
@@ -82,9 +81,16 @@ angular.module('MyBlog')
 			});
 		};
 
-		//adding a post 
-		$scope.addPost = function() {
-			$scope.NewPost = {
+		//remove a post
+		$scope.removePost = function() {
+			$scope.remove = Post.delete({id: $stateParams.id}, function() {
+				window.location.href = '/#/posts';
+			})
+		};
+	}])
+	.controller('AddPostController', ['$scope', 'Posts', function($scope, Posts){
+		$scope.addNewPost = function() {
+			var NewPost = {
 				title: $scope.title,
 				author: $scope.author,
 				image: $scope.image,
@@ -93,13 +99,18 @@ angular.module('MyBlog')
 				content: $scope.content
 			};
 
-			$scope.addPost = Posts.save($scope.NewPost, function() {
+			$scope.addPost = Posts.save(NewPost, function() {
 				window.location.href = '/#/posts';
 			});
 		};
-
+	}])
+	.controller('EditRemoveController', ['$scope', 'Post', '$stateParams', function($scope, Post, $stateParams){
+		$scope.getSinglePost = function(){
+			$scope.singlePost = Post.get({ id: $stateParams.id });
+		};
+		
 		//updating a post
-		$scope.updatePost = function() {
+		$scope.editPost = function() {
 			var editedVal = {
 				title: $scope.singlePost.title,
 				author: $scope.singlePost.author,
@@ -111,12 +122,5 @@ angular.module('MyBlog')
 				var id = $stateParams.id;
 				window.location.href = '/#/single/'+id;
 			});
-		};
-
-		//remove a post
-		$scope.removePost = function() {
-			$scope.remove = Post.delete({id: $stateParams.id}, function() {
-				window.location.href = '/#/posts';
-			})
 		};
 	}]);

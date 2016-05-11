@@ -2,7 +2,7 @@ var express = require('express'),
 	app = express(),
 	api = require('./api.js');
 
-app.set('port', process.env.port || 3004);
+app.set('port', process.env.port || 3003);
 app
 	.use(express.static('./app/'))
 	.use('/api/', api)

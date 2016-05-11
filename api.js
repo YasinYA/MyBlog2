@@ -104,7 +104,7 @@ router
 			res.json(posts);
 		});
 	})
-	.post(function() {
+	.post(function(req, res) {
 		var newPost = req.body;
 		Posts.addPost(newPost, function(err, post) {
 			if(err) {

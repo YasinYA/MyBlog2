@@ -136,7 +136,7 @@ gulp.task('build', ['build:copy1', 'build:copy2', 'build:copy3', 'build:remove']
 //////////////////////////////////////////
 gulp.task('browser-sync', ['server'], function() {
 	browserSync.init({
-		proxy: "http://localhost:3004",
+		proxy: "http://localhost:3003",
         port: 7000
 	});
 });
@@ -151,7 +151,7 @@ gulp.task('server', function(cb) {
 	}).on('start', function() {
 		if(!started) {
 			started = true;
-	         cb();
+	        cb();
 		}
 	});
 });
