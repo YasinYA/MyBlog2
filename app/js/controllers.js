@@ -7,8 +7,7 @@ angular.module('MyBlog')
 			};
 
 			$scope.user = Login.save($scope.logUser , function(data, status) {
-				window.location.href = '/dashboard'
-				console.log(data );
+				window.location.href = '/dashboard';
 			});
 		};
 	}])
@@ -23,19 +22,7 @@ angular.module('MyBlog')
 
 		// getting single post
 		$scope.getSingle = function(){
-			$scope.singlePost = Post.get({ id: $stateParams.id })
-		};
-
-		$scope.getlikes = function(e) {
-			$scope.likes = Likes.query();
-			$scope.arr2 = [];
-			$scope.likes.$promise.then(function(val) {
-				val.forEach(function(like) {
-					if ($stateParams.id === like.postId) {	
-						$scope.arr2.push(like);
-					}
-				});
-			});
+			$scope.singlePost = Post.get({ id: $stateParams.id });
 		};
 
 		$scope.like = 0;

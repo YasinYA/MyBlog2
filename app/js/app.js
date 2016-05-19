@@ -1,4 +1,4 @@
-angular.module('MyBlog', ['ui.router', 'ngResource'])
+angular.module('MyBlog', ['ui.router', 'ngResource', 'yaru22.angular-timeago'])
 	.config(['$stateProvider', '$urlRouterProvider', '$locationProvider',function($stateProvider, $urlRouterProvider, $locationProvider) {
 		$urlRouterProvider.otherwise("/");
 

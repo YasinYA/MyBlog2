@@ -33,7 +33,10 @@ module.exports.getComments = function(callback, limit) {
 	Comments.find(callback).limit(limit);
 };
 
-
+//single post comments
+module.exports.getPostComments = function(id, callback) {
+	Comments.find({postId: id}, callback);
+}
 //adding a comments
 module.exports.addComment = function(comment, callback) {
 	Comments.create(comment, callback);

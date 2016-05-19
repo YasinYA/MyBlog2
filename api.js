@@ -167,18 +167,22 @@ router
 	});
 
 router
+	.route('/comments/:id')
+	.get(function(req, res) {
+		var id = req.params.id;
+		Comments.getPostComments(id, function(err, comment) {
+			if(err) {
+				throw err;
+			}
+			res.json(comment);
+		});
+	});
+
+router
 	/////////////////////////////////////////////
 	//	Likes
 	/////////////////////////////////////////////	
 	.route('/likes')
-	.get(function(req, res) {
-		Likes.getLikes(function(err, likes) {
-			if(err) {
-				throw err;
-			}
-			res.json(likes);
-		});
-	})
 	.post(function(req, res) {
 		var newLikes = req.body;
 		Likes.like(newLikes, function(err, likes) {
@@ -188,5 +192,17 @@ router
 			res.json(likes);
 		});
 	});
+
+router
+	.route('/postlikes/:id')
+	.get(function(req, res) {
+		var id = req.params.id;
+		Likes.getLikes(id, function(err, likes) {
+			if(err) {
+				throw err;
+			}
+			res.json(likes);
+		});
+	})
 
 module.exports = router;

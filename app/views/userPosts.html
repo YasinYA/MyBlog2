@@ -3,7 +3,7 @@
 		<div class="posts row">
 			<div class="info col-sm-12">
 				<span>in <span class="category">{{post.category}}</span> <span>By {{post.author}}</span></span>
-				<span class="pull-right">{{post.createddate | date : 'yyyy-MM-dd'}}</span>
+				<span class="pull-right">{{post.createddate | date : timeAgo}}</span>
 			</div>
 			<div class="thumbnail">
 				<img src="{{post.image}}">
@@ -15,8 +15,8 @@
 				</div>
 				<div class="likesComments">
 					<div>
-						<span class="like"><span><i class="fa fa-heart likeIcon" aria-hidden="true"></i></span> likes</span>
-						<span class="comments"><i class="fa fa-comment commentIcon" aria-hidden="true"></i> </span>
+						<span class="like"><span><i ng-click="liker(post._id)" class="fa fa-heart likeIcon" aria-hidden="true"></i></span> <dr-Likes separate='false' id="{{post._id}}"></dr-Likes></span>
+						<span class="comments"><i class="fa fa-comment commentIcon" aria-hidden="true"></i> <dr-Comments id='{{post._id}}'></dr-Comments></span>
 					</div>
 				</div>
 			</div>

@@ -23,8 +23,10 @@ var paths = {
 	scripts: [
 		'app/js/app.js',
 		'app/js/services.js',
+		'app/js/PostLike.js',
 		'app/js/controllers.js',
-		'app/js/filters.js'
+		'app/js/filters.js',
+		'app/js/directives.js'
 	],
 	stylesSrc: [
 		'app/styles/scss/*.scss'

@@ -8,15 +8,15 @@
 				<h2>{{singlePost.title}}</h2>
 				<p>{{singlePost.content}}</p>
 				<span>{{singlePost.author}}</span>
-				<span class="pull-right">{{singlePost.createddate | date : 'yyyy-MM-dd'}}</span>
+				<span class="pull-right">{{singlePost.createddate | date : timeAgo}}</span>
 			</div>
 			<br>
 			<hr/>
 			
 			<div ng-init="getComments()">
 				<div class="row mainWrapper">
-					<div ng-init="getlikes(singlePost._id)" class=" likeWrapper">
-						<h4><span class="singlePostLike"><span><i ng-click="liker(singlePost._id)" class="fa fa-heart likeIcon" aria-hidden="true"></i></span> {{arr2.length}}</span></h4>
+					<div class="likeWrapper">
+						<h4><span class="singlePostLike"><span><i ng-click="liker(singlePost._id)" class="fa fa-heart likeIcon" aria-hidden="true"></i></span> <dr-Likes separate='true' id="{{post._id}}"></dr-Likes></span></h4>
 					</div>
 					<div class=" commentWrapper">
 						<h4><i class="fa fa-comment commentIcon" aria-hidden="true"></i> {{arr.length}}</h4>
@@ -37,7 +37,7 @@
 										</span>
 									</div>
 									<div class="col-sm-3">
-										<span class="pull-right date">{{comment.createddate | date : 'yyyy-MM-dd  HH:mm'}}</span>
+										<span class="pull-right date"><time-ago from-time='{{ comment.createddate }}'></time-ago></span>
 									</div>
 								</div>
 							</div>

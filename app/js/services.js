@@ -54,10 +54,6 @@ angular
 		})
 	}]).factory("Likes", ["$resource", function($resource) {
 		return $resource("/api/likes", {
-			query: {
-				method: "GET",
-				isArray: !0
-			},
 			save: {
 				method: "POST"
 			}
