@@ -9,6 +9,9 @@
 
     <!-- LOGIN FORM -->
     <form  ng-submit="LoginHandler()">
+        <div ng-show="show === true" class="alert alert-danger">
+            <span>{{message}}</span>
+        </div>
         <div class="form-group">
             <label>Username</label>
             <input type="text" class="form-control" ng-model="username" required name="username">

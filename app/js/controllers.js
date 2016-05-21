@@ -1,13 +1,16 @@
 angular.module('MyBlog')
-	.controller('LoginController', ['$scope', 'Login', function($scope, Login){
+	.controller('LoginController', ['$scope', '$http', function($scope, $http){
 		$scope.LoginHandler = function() {
 			$scope.logUser = {
 				username: $scope.username,
 				password: $scope.password
 			};
 
-			$scope.user = Login.save($scope.logUser , function(data, status) {
+			$http.post('/api/admin', $scope.logUser).success(function(res) {
 				window.location.href = '/dashboard';
+			}).error(function(err) {
+				$scope.message = 'Invalid User';
+				$scope.show = true;
 			});
 		};
 	}])

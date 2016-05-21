@@ -66,11 +66,9 @@ router
 	.get(function(req, res) {
 		res.sendFile(__dirname + '/app/admin.html');
 	})
-	.post(passport.authenticate('login', {
-		successRedirect: '/dashboard',
-		failureRedirect: '/',
-		failureFlash: true
-	}));
+	.post(passport.authenticate('login'), function(req, res) {
+		res.sendStatus(200);
+	});
 
 router
 	/////////////////////
@@ -167,6 +165,9 @@ router
 	});
 
 router
+	/////////////////////////////////////////////
+	//	Single Post Comments
+	/////////////////////////////////////////////
 	.route('/comments/:id')
 	.get(function(req, res) {
 		var id = req.params.id;
@@ -194,6 +195,9 @@ router
 	});
 
 router
+	/////////////////////////////////////////////
+	//	Single Post Likes
+	/////////////////////////////////////////////
 	.route('/postlikes/:id')
 	.get(function(req, res) {
 		var id = req.params.id;

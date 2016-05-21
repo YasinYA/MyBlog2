@@ -1,12 +1,6 @@
 angular
 	.module("MyBlog")
-	.factory("Login", ["$resource", function($resource) {
-		return $resource("/api/admin", {
-			save: {
-				method: "POST"
-			}
-		})
-	}]).factory("Posts", ["$resource", function($resource) {
+	.factory("Posts", ["$resource", function($resource) {
 		return $resource("/api/posts", {
 			query: {
 				method: "GET",
