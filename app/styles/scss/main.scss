@@ -1,5 +1,5 @@
-@import "./_variables.scss";
-@import "./_typography.scss";
+@import "_variables.scss";
+@import "_typography.scss";
 
 /* Common */
 body {
@@ -34,7 +34,20 @@ a {
 }
 
 .navbar-brand {
-	color: $navBrandColor !important;
+	color: $navBrandFNColor !important;
+
+	& .lName {
+		color: $navBrandLNColor;
+	}
+}
+
+/* Welcome Page */
+
+.welcome {
+	color: $headerFontColor;
+	margin-top: $XLhighMar;
+	margin-bottom: $XhighMar;
+	text-shadow: $textShadow;
 }
 
 /* Posts Page */
