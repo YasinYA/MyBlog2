@@ -1,33 +1,27 @@
 angular 
 	.module('MyBlog')
-	.directive('drLikes', ['Likes', '$http', '$stateParams', function(Likes, $http, $stateParams){
+	.directive('drLikes', ['SinglePostLikes', function(SinglePostLikes){
 		// Runs during compile
 		return {
 			restrict: 'E',
 			templateUrl: '../views/directives/likes.html',
 			link: function($scope, element, attr) {
-				$scope.separator = attr.separate;
-				if($scope.separator === 'false') {
-					$http.get('/api/postlikes/' + attr.id).success(function(res) {
-						$scope.postlikes = res;
-						console.log($scope.postlikes);
-					});
-				}else if($scope.separator === 'true') {
-					$http.get('/api/postlikes/' + $stateParams.id).success(function(res) {
-						$scope.postlikes = res;
-					});
-				}
+				$scope.postlike = SinglePostLikes.getlikes(attr.id, attr.separate);
+				$scope.postlike.success(function(res) {
+					$scope.postlikes = res;
+				});
 			}
 
 		};
 	}])
-	.directive('drComments', ['$http', '$stateParams', function($http, $stateParams){
+	.directive('drComments', ['$http', 'SinglePostComments', '$stateParams', function($http, SinglePostComments, $stateParams){
 		// Runs during compile
 		return {
 			restrict: 'E',
 			templateUrl: '../views/directives/comments.html',
 			link: function($scope, element, attr) {
-				$http.get('/api/comments/' + attr.id).success(function(res) {
+				$scope.SinglepostComment = SinglePostComments.getComments(attr.id);
+				$scope.SinglepostComment.success(function(res) {
 					$scope.SinglepostComments = res;
 				});
 			}

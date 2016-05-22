@@ -52,4 +52,24 @@ angular
 				method: "POST"
 			}
 		})
+	}])
+	.factory('SinglePostLikes', ['$http', '$stateParams', function($http, $stateParams){
+		var data = {};
+		data.getlikes = function (id, sep){
+			if(sep === 'true') {
+				return $http.get('/api/postlikes/'+ $stateParams.id);
+			}else if(sep === 'false') {
+				return $http.get('/api/postlikes/'+id);
+			}
+		};
+
+		return data;
+	}])
+	.factory('SinglePostComments', ['$http', function($http){
+		var data = {};
+		data.getComments = function (id){
+			return $http.get('/api/comments/'+id);
+		};
+
+		return data;
 	}]);
