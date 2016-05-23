@@ -3,6 +3,7 @@ angular
 	.directive('drLikes', ['SinglePostLikes', function(SinglePostLikes){
 		// Runs during compile
 		return {
+			scope: {},
 			restrict: 'E',
 			templateUrl: '../views/directives/likes.html',
 			link: function($scope, element, attr) {
@@ -17,6 +18,7 @@ angular
 	.directive('drComments', ['$http', 'SinglePostComments', '$stateParams', function($http, SinglePostComments, $stateParams){
 		// Runs during compile
 		return {
+			scope: {},
 			restrict: 'E',
 			templateUrl: '../views/directives/comments.html',
 			link: function($scope, element, attr) {

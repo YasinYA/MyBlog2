@@ -1,24 +1,57 @@
-<div id="postWrapper" class="container row" ng-init="getPosts()">
-	<div class="col-md-7" ng-repeat="post in posts">
-		<div class="posts row">
-			<div class="info col-sm-12">
-				<span>in <span class="category">{{post.category}}</span> <span>By {{post.author}}</span></span>
-				<span class="pull-right">{{post.createddate | date : timeAgo}}</span>
-			</div>
-			<div class="thumbnail">
-				<img src="{{post.image}}">
-			</div>
-			<div>
-				<div class="postContent">
-					<h2 class="title"><a href="/#/more/{{post._id}}">{{post.title}}</a></h2>
-					<p class="par">{{post.content | limitTo: 300}}...</p>
+<div class="row">
+	<div id="postWrapper" class="container row col-md-7" ng-init="getPosts()">
+		<div id="postsWrap" class="col-md-12" ng-repeat="post in posts">
+			<div class="posts row">
+				<div class="info col-sm-12">
+					<span>in <span class="category">{{post.category}}</span> <span>By {{post.author}}</span></span>
+					<span class="pull-right">{{post.createddate | date : timeAgo}}</span>
 				</div>
-				<div class="likesComments">
-					<div>
-						<span class="like"><span><i ng-click="liker(post._id)" class="fa fa-heart likeIcon" aria-hidden="true"></i></span> <dr-Likes separate='false' id="{{post._id}}"></dr-Likes></span>
-						<span class="comments"><i class="fa fa-comment commentIcon" aria-hidden="true"></i> <dr-Comments id='{{post._id}}'></dr-Comments></span>
+				<div class="thumbnail">
+					<img src="{{post.image}}">
+				</div>
+				<div>
+					<div class="postContent">
+						<h2 class="title"><a href="/#/more/{{post._id}}">{{post.title}}</a></h2>
+						<p class="par">{{post.content | limitTo: 300}}...</p>
+					</div>
+					<div class="likesComments">
+						<div>
+							<span class="like"><span><i ng-click="liker(post._id)" class="fa fa-heart likeIcon" aria-hidden="true"></i></span> <dr-Likes separate='false' id="{{post._id}}"></dr-Likes></span>
+							<span class="comments"><i class="fa fa-comment commentIcon" aria-hidden="true"></i> <dr-Comments id='{{post._id}}'></dr-Comments></span>
+						</div>
 					</div>
 				</div>
+			</div>
+		</div>
+	</div>
+
+	<div class="col-md-4 pull-right">
+		<div id="card">
+			<div class="panel panel-default">
+			  <div class="panel-heading">Panel heading without title</div>
+			  <div class="panel-body">
+			    Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+			    tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+			    quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+			    consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+			    cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+			    proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+			  </div>
+			</div>
+
+			<div class="panel panel-default">
+			  <div class="panel-heading">Panel heading without title</div>
+			  <div class="panel-body">
+			    Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+			    tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+			    quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+			    consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+			    cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+			    proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+			  </div>
+			</div>
+
+
 			</div>
 		</div>
 	</div>
