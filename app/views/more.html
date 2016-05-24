@@ -1,75 +1,82 @@
-<div class="container" ng-init="getSingle()">
-	<div class="row">
-		<div class="col-sm-8 jumbotron">
-			<div class="thumbnail">
-				<img src="{{singlePost.image}}">
-			</div>
-			<div>
-				<h2>{{singlePost.title}}</h2>
-				<p>{{singlePost.content}}</p>
-				<span>{{singlePost.author}}</span>
-				<span class="pull-right">{{singlePost.createddate | date : timeAgo}}</span>
-			</div>
-			<br>
-			<hr/>
-			
-			<div ng-init="getComments()">
-				<div class="row mainWrapper">
-					<div class="likeWrapper">
-						<h4><span class="singlePostLike"><span><i ng-click="liker(singlePost._id)" class="fa fa-heart likeIcon" aria-hidden="true"></i></span> <dr-Likes separate='true' id="{{post._id}}"></dr-Likes></span></h4>
-					</div>
-					<div class=" commentWrapper">
-						<h4><i class="fa fa-comment commentIcon" aria-hidden="true"></i> {{arr.length}}</h4>
-					</div>
+<div class="container row">
+	<div class="col-md-7" ng-init="getSingle()">
+		<div class="row">
+			<div class="col-sm-12 jumbotron">
+				<div class="thumbnail">
+					<img src="{{singlePost.image}}">
 				</div>
-				<div ng-repeat="comment in comments">
-					<div ng-show="singlePost._id == comment.postId">	
-						<div class="well row">
-							<div class="pull-left col-sm-3">
-								<img class="avatar img-responsive" src="{{comment.image}}">
-							</div>
-							<div class="col-sm-8">
-								<div class="row">
-									<div class="col-sm-9">
-										<h4 class="name"><a href="">{{comment.name | labelCase}}</a></h4>
-										<span class="body">
-											{{comment.body}}
-										</span>
-									</div>
-									<div class="col-sm-3">
-										<span class="pull-right date"><time-ago from-time='{{ comment.createddate }}'></time-ago></span>
+				<div>
+					<h2>{{singlePost.title}}</h2>
+					<p>{{singlePost.content}}</p>
+					<span>{{singlePost.author}}</span>
+					<span class="pull-right">{{singlePost.createddate | date : timeAgo}}</span>
+				</div>
+				<br>
+				<hr/>
+				
+				<div ng-init="getComments()">
+					<div class="row mainWrapper">
+						<div class="likeWrapper">
+							<h4><span class="singlePostLike"><span><i ng-click="liker(singlePost._id)" class="fa fa-heart likeIcon" aria-hidden="true"></i></span> <dr-Likes separate='true' id="{{post._id}}"></dr-Likes></span></h4>
+						</div>
+						<div class=" commentWrapper">
+							<h4><i class="fa fa-comment commentIcon" aria-hidden="true"></i> {{arr.length}}</h4>
+						</div>
+					</div>
+					<div ng-repeat="comment in comments">
+						<div ng-show="singlePost._id == comment.postId">	
+							<div class="well row">
+								<div class="pull-left col-sm-3">
+									<img class="avatar img-responsive" src="{{comment.image}}">
+								</div>
+								<div class="col-sm-8">
+									<div class="row">
+										<div class="col-sm-9">
+											<h4 class="name"><a href="">{{comment.name | labelCase}}</a></h4>
+											<span class="body">
+												{{comment.body}}
+											</span>
+										</div>
+										<div class="col-sm-3">
+											<span class="pull-right date"><time-ago from-time='{{ comment.createddate }}'></time-ago></span>
+										</div>
 									</div>
 								</div>
 							</div>
 						</div>
 					</div>
 				</div>
-			</div>
-			<div>
-				<form class="form-horizontal"  ng-submit="addComment()">
-					<div class="from-group">
-						<label for="name" class="contorl-label input-local">
-							Name
-						</label>
-						<input type="text" class="form-control input-local" name="name" ng-model="name" placeholder="Name" required></input>
-					</div>
-					<div class=" from-group">
-						<label for="name" class="contorl-label input-local">
-							Email
-						</label>
-						<input type="email" class="form-control input-local" name="email" ng-model="email" placeholder="Email" required></input>
-					</div>
-					<div class="from-group">
-						<label for="comment" class="contorl-label input-local">
-							Comment
-						</label>
-						<textarea type="text" class="form-control input-local" name="comment" ng-model="body" placeholder="Comment" required></textarea>
-					</div>
-					<div>
-						<button type="submit" class="btn btn-info btn-local">Add Comment</button>
-					</div>
-				</form>
+				<div>
+					<form class="form-horizontal"  ng-submit="addComment()">
+						<div class="from-group">
+							<label for="name" class="contorl-label input-local">
+								Name
+							</label>
+							<input type="text" class="form-control input-local" name="name" ng-model="name" placeholder="Name" required></input>
+						</div>
+						<div class=" from-group">
+							<label for="name" class="contorl-label input-local">
+								Email
+							</label>
+							<input type="email" class="form-control input-local" name="email" ng-model="email" placeholder="Email" required></input>
+						</div>
+						<div class="from-group">
+							<label for="comment" class="contorl-label input-local">
+								Comment
+							</label>
+							<textarea type="text" class="form-control input-local" name="comment" ng-model="body" placeholder="Comment" required></textarea>
+						</div>
+						<div>
+							<button type="submit" class="btn btn-info btn-local">Add Comment</button>
+						</div>
+					</form>
+				</div>
 			</div>
 		</div>
+	</div>
+
+
+	<div class="col-md-4 pull-right">
+		<side-Bar showing='true'></side-Bar>
 	</div>
 </div>

@@ -1,0 +1,52 @@
+<div id="card">
+	<div class="panel panel-default">
+	  <div class="panel-heading text-center panel-local">About Author</div>
+	  <div class="panel-body">
+	    <div class="row">
+	    	<div class="col-md-12">
+				<img src="../../images/P_20160213_174115_1_p.jpg" class="img-responsive img-local center-block">
+			</div>
+			<div class="col-md-12">
+				<h4 class="text-center">Yasin Yusuf</h4>
+			</div>
+			<div class="col-md-12">
+				<p class="text-center">Junoir Web Developer Using JavaScript</p>
+			</div>
+	    </div>
+	  </div>
+	</div>
+
+	<div class="panel panel-default">
+	  <div class="panel-heading text-center panel-local">Join to Get Important Updates</div>
+	  <div class="panel-body">
+	    <div class="row">
+			<div class="col-md-12">
+				<p class="text-center"> Optin to recieve valuable and great content about Web Coding </p>
+			</div>
+			<div class="col-md-12 text-center">
+				<button class="btn btn-info">Subscribe</button>
+			</div>
+	    </div>
+	  </div>
+	</div>
+
+	<div class="panel panel-default" ng-show="shower ===  'true'">
+	  <div class="panel-heading text-center panel-local">Recent Posts</div>
+	  <div class="panel-body">
+	    <div class="row rposts" ng-repeat="rPost in recentPosts | orderBy: 'createddate':true ">
+			<div class="col-md-4">
+				<img src="{{rPost.image}}" class="img-thumbnail img-round">
+			</div>
+			<div class="col-md-8">
+				<div class="postContent">
+					<h5 class="title"><a href="/#/more/{{rPost._id}}">{{rPost.title}}</a></h5>
+					<span class="time">By <span class="author">{{rPost.author | labelCase}}</span></span>
+					<p class="par">{{rPost.content | limitTo: 50}}...</p>
+					<span class="time"><time-ago from-time='{{rPost.createddate}}'></time-ago></span>
+				</div>
+			</div>
+	    </div>
+	  </div>
+	</div>
+
+</div>

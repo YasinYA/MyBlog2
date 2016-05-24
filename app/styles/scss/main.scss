@@ -4,7 +4,7 @@
 /* Common */
 body {
 	margin-bottom: 100px;
-	background: #fff;
+	background: #fafafa;
 }
 
 .bodybg {
@@ -120,6 +120,33 @@ a {
 
 .input-local {
 	margin-bottom: $lowMar;
+}
+
+.img-local {
+	width: 200px;
+	height: 200px;
+	border-radius: $roundImageBR;
+	border: $authorImageBorder;
+
+	&:hover {
+		border: $authorImageBorderHover;
+	}
+}
+
+.panel-local {
+	background: $postInfobg !important;
+}
+
+.rposts {
+	margin-bottom: $lowMar;
+}
+
+.time {
+	margin-left: $lowMar;
+}
+
+.author {
+	color: $categoryFontColor;
 }
 
 /* About Me Page */

@@ -1,7 +1,6 @@
 angular 
 	.module('MyBlog')
 	.directive('drLikes', ['SinglePostLikes', function(SinglePostLikes){
-		// Runs during compile
 		return {
 			scope: {},
 			restrict: 'E',
@@ -15,8 +14,7 @@ angular
 
 		};
 	}])
-	.directive('drComments', ['$http', 'SinglePostComments', '$stateParams', function($http, SinglePostComments, $stateParams){
-		// Runs during compile
+	.directive('drComments', ['SinglePostComments', function(SinglePostComments){
 		return {
 			scope: {},
 			restrict: 'E',
@@ -28,5 +26,18 @@ angular
 				});
 			}
 
+		};
+	}])
+	.directive('sideBar', ['Posts', function(Posts){
+		return {
+			scope: {},
+			restrict: 'EA',
+			templateUrl: '../views/directives/sidebar.html',
+			link: function($scope, element, attr) {
+				$scope.shower = attr.showing;
+				if($scope.shower === 'true') {
+					$scope.recentPosts = Posts.query();
+				}
+			}
 		};
 	}]);
