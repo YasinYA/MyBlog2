@@ -1,5 +1,18 @@
 angular
 	.module("MyBlog")
+	.factory('Login', ['$http', function($http){
+		var user = {};
+		user.postCredential = function() {
+			$http.post('/api/admin', $scope.logUser).success(function(res) {
+				window.location.href = '/dashboard';
+			}).error(function(err) {
+				user.message = 'Invalid User';
+				user.show = true;
+			});
+		};
+
+		return user;
+	}])
 	.factory("Posts", ["$resource", function($resource) {
 		return $resource("/api/posts", {
 			query: {
