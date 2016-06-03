@@ -46,7 +46,16 @@ angular.module('MyBlog', ['ui.router', 'ngResource', 'yaru22.angular-timeago'])
 		        	'nav' : {templateUrl: 'views/dashboardNav.html'},
 		        	'content' : { templateUrl: '../../dashboard.html',
 		        				  controller: 'DashboardController'	}
-		        }
+		        },
+		        onEnter : ['$http', '$state',function($http, $state) {
+		        	$http.get('/api/dashboard').then(function(res) {
+		        		if(res.data.success === 'Authorized') {
+		        			$state.go('dashboard');
+		        		}else {
+		        			$state.go('admin');
+		        		}
+		        	});
+		        }]
 		    })
 		    .state('posts', {
 		    	url: '/posts',

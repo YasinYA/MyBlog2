@@ -2,8 +2,8 @@ angular
 	.module("MyBlog")
 	.factory('Login', ['$http', function($http){
 		var user = {};
-		user.postCredential = function() {
-			$http.post('/api/admin', $scope.logUser).success(function(res) {
+		user.postCredential = function(obj) {
+			$http.post('/api/admin', obj).success(function(res) {
 				window.location.href = '/dashboard';
 			}).error(function(err) {
 				user.message = 'Invalid User';
@@ -12,6 +12,16 @@ angular
 		};
 
 		return user;
+	}])
+	.factory('Dashboard', ['$http', function($http){
+		var auth = {};
+		auth.checkauthorization = function() {
+			$http.get('/api/dashboard').success(function(response) {
+				return auth.message = response.success;
+			});
+		};
+
+		return auth;
 	}])
 	.factory("Posts", ["$resource", function($resource) {
 		return $resource("/api/posts", {

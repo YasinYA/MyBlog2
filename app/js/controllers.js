@@ -6,7 +6,7 @@ angular.module('MyBlog')
 				password: $scope.password
 			};
 
-			$scope.login = Login.postCredential();
+			$scope.login = Login.postCredential($scope.logUser);
 			$scope.message = Login.message;
 			$scope.show = Login.show;
 			// $http.post('/api/admin', $scope.logUser).success(function(res) {
@@ -17,8 +17,9 @@ angular.module('MyBlog')
 			// });
 		};
 	}])
-	.controller('DashboardController', ['$scope', function($scope){
+	.controller('DashboardController', ['$scope', 'Dashboard' , function($scope, Dashboard){
 		$scope.message = 'hello world this is dashboard';
+		// $scope.check = Dashboard.checkauthorization();
 	}])
 	.controller('PostsController', ['$scope', 'Posts', 'Post', 'Likes', 'Comments', '$stateParams', function($scope, Posts, Post, Likes, Comments, $stateParams) {
 		//getting all the posts
