@@ -19,7 +19,6 @@ angular.module('MyBlog')
 	}])
 	.controller('DashboardController', ['$scope', 'Dashboard' , function($scope, Dashboard){
 		$scope.message = 'hello world this is dashboard';
-		// $scope.check = Dashboard.checkauthorization();
 	}])
 	.controller('PostsController', ['$scope', 'Posts', 'Post', 'Likes', 'Comments', '$stateParams', function($scope, Posts, Post, Likes, Comments, $stateParams) {
 		//getting all the posts
