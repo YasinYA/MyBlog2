@@ -1,5 +1,4 @@
 @import "_variables.scss";
-@import "_typography.scss";
 
 /* Common */
 body {
@@ -36,6 +35,8 @@ a {
 
 .navbar-brand {
 	color: $navBrandFNColor !important;
+	font-family: $NameFont !important;
+	font-size: $NameFontSize;
 
 	& .lName {
 		color: $navBrandLNColor;
@@ -80,7 +81,10 @@ a {
 }
 
 .par {
-	margin-left: $lowMar;
+	margin-left: $lowMar !important;
+	font-family: $PostFont !important;
+	line-height: 1.7em !important;
+	font-size: 1.2em !important;
 }
 
 .category {
@@ -103,6 +107,15 @@ a {
 	margin-left: $midMar;
 }
 
+.par2 {
+	font-family: $PostFont !important;
+	line-height: 1.7em !important;
+	font-size: 1.2em !important;
+}
+
+.dateSpan {
+	font-size: 0.7em !important;
+}
 
 .commentWrapper {
 	width: 120px;
