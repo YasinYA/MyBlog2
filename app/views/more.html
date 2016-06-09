@@ -7,7 +7,7 @@
 				</div>
 				<div>
 					<h2>{{singlePost.title}}</h2>
-					<p>{{singlePost.content}}</p>
+					<p class="par2">{{singlePost.content}}</p>
 					<span>{{singlePost.author}}</span>
 					<span class="pull-right">{{singlePost.createddate | date : timeAgo}}</span>
 				</div>
@@ -38,7 +38,7 @@
 											</span>
 										</div>
 										<div class="col-sm-3">
-											<span class="pull-right date"><time-ago from-time='{{ comment.createddate }}'></time-ago></span>
+											<span class="pull-right date dateSpan"><time-ago from-time='{{ comment.createddate }}'></time-ago></span>
 										</div>
 									</div>
 								</div>

@@ -76,7 +76,7 @@ router
 	////////////////////
 	.route('/dashboard')
 	.get(loggedIn, function(req, res) {
-		res.sendFile(__dirname + '/app/dashboard.html');
+		res.status(200).json({success: 'Authorized'});
 	});
 
 router

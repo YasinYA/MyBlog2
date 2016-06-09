@@ -1,20 +1,23 @@
 angular.module('MyBlog')
-	.controller('LoginController', ['$scope', '$http', function($scope, $http){
+	.controller('LoginController', ['$scope', 'Login', function($scope, Login){
 		$scope.LoginHandler = function() {
 			$scope.logUser = {
 				username: $scope.username,
 				password: $scope.password
 			};
 
-			$http.post('/api/admin', $scope.logUser).success(function(res) {
-				window.location.href = '/dashboard';
-			}).error(function(err) {
-				$scope.message = 'Invalid User';
-				$scope.show = true;
-			});
+			$scope.login = Login.postCredential($scope.logUser);
+			$scope.message = Login.message;
+			$scope.show = Login.show;
+			// $http.post('/api/admin', $scope.logUser).success(function(res) {
+			// 	window.location.href = '/dashboard';
+			// }).error(function(err) {
+			// 	$scope.message = 'Invalid User';
+			// 	$scope.show = true;
+			// });
 		};
 	}])
-	.controller('DashboardController', ['$scope', function($scope){
+	.controller('DashboardController', ['$scope', 'Dashboard' , function($scope, Dashboard){
 		$scope.message = 'hello world this is dashboard';
 	}])
 	.controller('PostsController', ['$scope', 'Posts', 'Post', 'Likes', 'Comments', '$stateParams', function($scope, Posts, Post, Likes, Comments, $stateParams) {
