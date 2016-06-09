@@ -9,12 +9,6 @@ angular.module('MyBlog')
 			$scope.login = Login.postCredential($scope.logUser);
 			$scope.message = Login.message;
 			$scope.show = Login.show;
-			// $http.post('/api/admin', $scope.logUser).success(function(res) {
-			// 	window.location.href = '/dashboard';
-			// }).error(function(err) {
-			// 	$scope.message = 'Invalid User';
-			// 	$scope.show = true;
-			// });
 		};
 	}])
 	.controller('DashboardController', ['$scope', 'Dashboard' , function($scope, Dashboard){
